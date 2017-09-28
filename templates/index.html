@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <title>Text SimilarityDemo</title>
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>     
+    </head>
+    
+    <style>
+    input_text {
+    width: 450px;
+    overflow: auto;
+    padding: 1em;
+    background: #000;
+}
+</style>
+
+    <body>
+        <div class="container">
+ 
+ 
+  <h2>Find similar conversation</h2>
+  <form  action="" method="post" role="form">
+    {{ form.csrf }}
+    <div class="form-group">
+      <label for="name">Enter a phrase:</label>
+      <input type="text" class="form-control" id="name" name="name" placeholder="Your conversation goes here">
+    </div>
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+ 
+  <br>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                        <br>
+                        {% if message %}
+                            <ul>
+                                {% for msg in message[1] %}
+                                <br>
+                                    {{ msg |safe }}
+                                <br>
+                                {% endfor %}
+                                <br>
+                            <ul>
+                        {% endif %}
+                    {% endfor %}            
+                </ul>
+            {% endif %}
+        {% endwith %}
+        </div>
+                    <br>
+                                </div> 
+    </body>
+</html>
