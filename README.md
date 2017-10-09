@@ -30,7 +30,7 @@
 </p>
 
 ## Demo
-<p> Video of the Web application demo is [here] (https://youtu.be/Ity2xKESYPo)</p>
+<p> Video of the Web application demo is [here](https://youtu.be/Ity2xKESYPo) </p>
 
 ## Requirements
 ```
