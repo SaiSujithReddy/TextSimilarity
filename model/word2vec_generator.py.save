@@ -1,0 +1,78 @@
+import pandas as pd
+import gensim
+import numpy as np
+import pickle
+import random
+from scipy import spatial
+from numpy import array
+
+
+skill_name_unique_list = ["Attempts to close the sale","Fact-gathering question","Highlights benefits to customer",
+                          "Attempts to upsell","Attempts to schedule a next step","Test close"]
+for skill_name_value in skill_name_unique_list:
+    df = pd.read_csv('data/four_companies_event_level_data.csv',sep='|', quotechar='"')
+    #print("df shape is ", df.shape )
+    df_agent = df.loc[(df.is_customer == 'f') & (df.skill_name == skill_name_value)]
+    #print("df_agent", df_agent)
+    df_agent.skill_name.fillna(value='none',inplace=True)
+    #df[df.C.str.contains("XYZ") == False]
+    df_agent_unique = df_agent[df_agent.content.str.contains("airconditioning,") == False]
+    df_agent_unique = df_agent_unique.drop_duplicates('content')
+    print("df_agent_unique shape is ", df_agent_unique.shape)
+    
+    df_agent_unique_min_length = df_agent_unique[~(df_agent_unique.content.str.len() < 50)]
+    
+    df_agent_unique_min_length = df_agent_unique_min_length[~(df_agent_unique.content.str.len() > 1000)]
+    
+    df_agent_unique_min_length = df_agent_unique_min_length[(df_agent_unique['content'].notnull())]
+    print("df_agent_unique_min_length shape is ", df_agent_unique_min_length.shape)
+    content_sent = []
+    for index, row in df_agent_unique_min_length.iterrows():
+        content_sent.append([row['content']])
+    print(len(content_sent))
+    
+    content_list = []
+    for i in range(len(content_sent)):
+        content_list.append(content_sent[i][0].split(' '))
+    print(len(content_list))
+    
+    for i in range(len(content_list)):
+        vector_sentence = []
+        for x in content_list[i]:
+            if x in word_vectors.vocab:
+                vector_sentence.append(model[x])
+        if len(vector_sentence)!=0:
+            mean_value = np.mean(np.array(vector_sentence), axis=0)
+            #print("value of mean_value", mean_value)
+            if(mean_value.all != 0):
+                vector_context.append(np.mean(np.array(vector_sentence), axis=0))
+            else:
+                print("Mean value of vector context value is zero, sentence number is ", i)
+                print("sentence is ", content_list[i])
+                vector_context.append(np.random.rand(300))        
+        else:
+            print("vector context value is zero, sentence number is ", i)
+            print("sentence is ", content_list[i])
+            vector_context.append(np.random.rand(300))
+   
+    X = array(vector_context)
+    
+    for i in range(0,len(X)):
+        if np.all(X[i]==0):
+            X[i] = np.random.rand(300)
+    
+    X_truncated = X[0:10]
+    X_cosine_matrix = []
+    for i in range(len(X_truncated)):
+        X_cosine_matrix.append([i]*len(X))
+        for j in range(0,len(X)):
+            X_cosine_matrix[i][j] = calculate_cosine_similarity(X_truncated[i],X[j])
+    
+    #Saving variables in to a file
+    
+    with open(skill_name_value+'.pkl','wb') as f:
+        pickle.dump(X_cosine_matrix,f)
+        pickle.dump(X,f)
+        pickle.dump(content_sent,f)
+        pickle.dump(df_agent_unique_min_length,f)
+        print("Saved ", skill_name_value+'.pkl', " file")
