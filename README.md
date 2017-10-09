@@ -26,7 +26,7 @@
 ## Pipeline
 
 <p align="center">
-<img src="https://github.com/SaiSujithReddy/TextSimilarity/blob/master/images/Screen%20Shot%202017-10-08%20at%2010.17.59%20PM.png" alt="Sentence similarity Pipeline" width="600px">
+<img src="https://github.com/SaiSujithReddy/TextSimilarity/blob/master/images/pipeline.png" alt="Sentence similarity Pipeline" width="600px">
 </p>
 
 ## Demo
