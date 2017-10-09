@@ -1,7 +1,7 @@
 # Text Similarity
 
 ## Objective
-<p> This project classifies conversational phrases into different categories based on the content. The network is trained on customer support conversations. Only agent's conversation is used for this purpose. The different categories of the conversation indicate the information the agent is providing/gathering. By predicting the classification category,the agent can be provided by more targeted documentation to help the customer. This tool can be used to both help/support the agent as well as measure their performance.</p>
+<p> This project finds similar sentences for an agent's conversation. The dataset used for this purpose is chat conversations of multiple companies' customer support. By finding similar conversations, we intend to give better guidance and support to the agent, thereby improving customer's experience. This tool can be used to both help/support the agent as well as measure their performance.</p>
 
 ## Data
 <p> Below is a snapshot of the chat conversation data: </p>
@@ -19,6 +19,9 @@
 | This program is much better than our competitor          | Upsells the product |
 
 ```
+
+## Methodology
+<p> Word 2 Vector representation of all the agents' conversations is created using Google Word2Vec model. When a new sentence is given, a word2vec representation is computed. Cosine similarity is calculated between the sentence and all the vectors. By finding similar sentences/conversations, agent can find the right responses from the repository. A flask based web application gives a web interface to find the similar sentences.
 
 ## Requirements
 ```
