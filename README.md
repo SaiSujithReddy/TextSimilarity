@@ -29,6 +29,8 @@
 <img src="https://github.com/SaiSujithReddy/TextSimilarity/blob/master/Screen%20Shot%202017-10-08%20at%2010.17.59%20PM.png" alt="Sentence similarity Pipeline" width="600px">
 </p>
 
+## Demo
+<p> Video of the Web application demo is [here] (https://youtu.be/Ity2xKESYPo)</p>
 
 ## Requirements
 ```
