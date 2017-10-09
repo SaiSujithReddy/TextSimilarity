@@ -21,7 +21,14 @@
 ```
 
 ## Methodology
-<p> Word 2 Vector representation of all the agents' conversations is created using Google Word2Vec model. When a new sentence is given, a word2vec representation is computed. Cosine similarity is calculated between the sentence and all the vectors. By finding similar sentences/conversations, agent can find the right responses from the repository. A flask based web application gives a web interface to find the similar sentences.
+<p> Word 2 Vector representation of all the agents' conversations is created using Google Word2Vec model. When a new sentence is given, a word2vec representation is computed. Cosine similarity is calculated between the sentence and all the vectors. By finding similar sentences/conversations, agent can find the right responses from the repository. A flask based web application gives a web interface to find the similar sentences. </p>
+
+## Pipeline
+
+<p align="center">
+<img src="https://github.com/SaiSujithReddy/TextSimilarity/blob/master/Screen%20Shot%202017-10-08%20at%2010.17.59%20PM.png" alt="Sentence similarity Pipeline" width="600px">
+</p>
+
 
 ## Requirements
 ```
