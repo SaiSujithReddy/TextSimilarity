@@ -61,3 +61,5 @@ Inputs: Input sentence (for which you need to find similar sentences)
 Output: Five most similar sentences where each sentence has agent id/ company id / cosine similarity measure </p>
 
 
+## Slides
+<p> Presentation slides are here: http://bit.ly/sai-ai
