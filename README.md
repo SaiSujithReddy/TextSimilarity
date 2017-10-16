@@ -48,7 +48,7 @@ tensorflow==1.2.1
 ```
 
 
-### helper_functions_v1:
+### helper_functions:
 
 <p> Includes model, helper functions.
 Inputs: a pkl file with skill_name
